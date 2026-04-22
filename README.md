@@ -1,3 +1,8 @@
+
+## 🚀 Live Project
+
+👉 Try it here: https://helpbuddy-six.vercel.app
+
 # 💙 HelpBuddy — Anonymous Mental Health Support Platform
 
 A full-stack web application for anonymous mental health support, featuring real-time chat, WebRTC voice calling, a self-discovery quiz, guided exercises, curated calming music, and emergency helplines.
@@ -64,18 +69,7 @@ helpbuddy/
     └── package.json
 ```
 
-## 🔐 Security Features
 
-- OTP hashed with bcrypt before storing (never stored in plain text)
-- JWT tokens with expiry
-- Rate limiting (10 requests/15 min on auth routes)
-- Helmet.js security headers
-- Input validation on all endpoints
-- Personal data NEVER sent to frontend — only initials
-- OTP expires in 10 minutes, max 5 attempts
-- CORS restricted to frontend URL
-
----
 
 
 
