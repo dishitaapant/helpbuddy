@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'https://helpbuddy-3p7x.onrender.com',
+  baseURL: process.env.REACT_APP_API_URL || 'https://helpbuddy-3p7x.onrender.com/api',
   timeout: 10000,
 });
 
