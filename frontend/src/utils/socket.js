@@ -5,7 +5,7 @@ let socket = null;
 
 export const getSocket = (token) => {
   if (!socket || socket.disconnected) {
-    socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000', {
+    socket = io(process.env.REACT_APP_SOCKET_URL || 'https://helpbuddy-3p7x.onrender.com', {
       auth: { token },
       transports: ['websocket'],
       reconnectionAttempts: 5,

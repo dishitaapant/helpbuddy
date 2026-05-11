@@ -6,10 +6,11 @@ const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv');
+const path = require('path');
 const connectDB = require('./config/db');
 const socketHandler = require('./config/socket');
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 // Connect to MongoDB
 connectDB();
@@ -35,18 +36,18 @@ app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   credentials: true,
 }));
-app.use(express.json({ limit: '10kb' })); // Prevent large payloads
+app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // ─── Rate Limiting ─────────────────────────────────────────────────────────────
 const globalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000,
   max: 100,
   message: { success: false, message: 'Too many requests, please try again later.' },
 });
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 10, // Strict for auth routes
+  max: 10,
   message: { success: false, message: 'Too many auth attempts. Please try again in 15 minutes.' },
 });
 app.use('/api/', globalLimiter);
